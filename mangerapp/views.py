@@ -9,7 +9,7 @@ from mangerapp.models import TBook
 
 def index(request):
     return render(request,'index.html')
-def add(request):
+def add(request):#添加表
     return render(request,'main/add.html')
 def addlogic(request):#添加书本逻辑，接收表单中的值
     productname=request.POST.get("productname")#商品名称
@@ -32,8 +32,9 @@ def addlogic(request):#添加书本逻辑，接收表单中的值
     return HttpResponse("不能为空")
 def dzlist(request):
     return render(request,'main/dzlist.html')
-def list(request):
-    select=TBook.objects.all()
+def list(request):#商品列表
+    select=TBook.objects.all()#查询全部书籍
+    # 渲染页面并将查询到全部书籍的QuerySet对象发送到前端页面
     return render(request,'main/list.html',{"select":select})
 def splb(request):
     return render(request,'main/splb.html')
